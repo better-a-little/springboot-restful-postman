@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="/js/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+	
+	/* $(function(){
+		$("#id").blur(function(){
+			var id = $("#id").val();
+			alert(id);
+		});
+	}); */
+	
+	function get1(){
+		/* window.location.href="rest/user/2" */
+		var id = $("#id").val();
+		alert(id);
+		$.ajax({
+			url:"/rest/user/"+id,
+			type:"get",
+			data:{},
+			success:function(data){
+				alert(JSON.string(data));
+			},
+			error:function(){
+				alert("请求失败");
+			}
+		});
+	}
+	function post1(){
+		$.ajax({
+			url:"/rest/user",
+			type:"post",
+			data:"id=" + id,
+			success:function(data){
+				alert("请求成功");
+			},
+			error:function(){
+				alert("请求失败");
+			}
+		});
+	}
+	function put1(){
+		$.ajax({
+			url:"/rest/user/2",
+			type:"put",
+			data:{},
+			success:function(data){
+				alert(JSON.string(data));
+			},
+			error:function(){
+				alert("请求失败");
+			}
+		});
+	}
+	function delete1(){
+		$.ajax({
+			url:"/rest/user/2",
+			type:"delete",
+			data:{},
+			success:function(data){
+				alert(JSON.string(data));
+			},
+			error:function(){
+				alert("请求失败");
+			}
+		});
+	}
+</script>
+
+<body>
+	
+	<input type="text" id="id"><br>
+
+	<input type="button" value="GET" onclick="get1()"><br>
+	<input type="button" value="POST" onclick="post1()"><br>
+	<input type="button" value="PUT" onclick="put1()"><br>
+	<input type="button" value="DELETE" onclick="delete1()"><br>
+	
+</body>
+</html>
